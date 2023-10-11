@@ -1,36 +1,37 @@
 package ru.piaksheva.stateapp.model.service;
 
+import ru.piaksheva.stateapp.controller.Controller;
 import ru.piaksheva.stateapp.view.ResultWriter;
 
 import java.util.Scanner;
 
 public class Menu {
     ResultWriter writer = new ResultWriter();
+    Controller controller = new Controller();
 
     public void start() {
         printMenu();
-        StateEventService stateEventService = new StateEventService();
         Scanner inputInt = new Scanner(System.in);
         while (true) {
             int option = inputInt.nextInt();
             if (option == 1) {
-                stateEventService.printCapital();
+                controller.printCapital();
             } else if (option == 2) {
-                stateEventService.countRegions();
+                controller.countRegions();
             } else if (option == 3) {
-                stateEventService.squareState();
+                controller.squareState();
             } else if (option == 4) {
-                stateEventService.printRegionCentre();
+                controller.printRegionCentre();
             } else if (option == 5) {
-                stateEventService.printAverageAge();
+                controller.printAverageAge();
             } else if (option == 6) {
                 writer.printResult("Введите нужное число букв, из которых состоит имя жителя");
                 int n = inputInt.nextInt();
-                stateEventService.nLetters(n);
+                controller.nLetters(n);
             } else if (option == 7) {
                 writer.printResult("Введите английскую букву, чтобы узнать, у скольких людей имя начинается с этой буквы");
                 String m = inputInt.next();
-                stateEventService.mLetters(m);
+                controller.mLetters(m);
             }
             printMenu();
         }
